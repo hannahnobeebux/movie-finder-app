@@ -12,6 +12,6 @@ async function getMovie(){
     console.log(data)
 }
 
-document.getElementById().addEventListener('click', () => {
+document.getElementById('search-button').addEventListener('click', () => {
     getMovie()
 })

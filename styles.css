@@ -1,5 +1,10 @@
 /* this is the styling page  */
 
+header {
+    margin-top: 15px;
+    padding:15px;
+}
+
 h1 {
     font-size: 30px; 
     font-family:'Courier New', Courier, monospace;
@@ -8,26 +13,22 @@ h1 {
     background-color:cornflowerblue;
     color: white;
     border-radius:15px;
-    margin: 15px;
-    margin-top: 10px;
 }
 
 
-/* #gridSection{
-    display: grid;
-    grid-template-columns: repeat(3,33.3%);
-    height: 100vh;  
-    grid-template-rows: repeat(5,20%);
-
-} */
 
 form {
     /* grid-column: 2 / 3;
     grid-row: 1 / 2; */
     display: grid;
     grid-template-columns: repeat(3,33.3%);
-    height: 100vh;  
+    height: 50vh;  
     grid-template-rows: repeat(12,8.4%);
+}
+
+ .btn-group{
+    padding:15px;
+    margin-left:10px;
 }
 
 #movieSection{
@@ -38,41 +39,78 @@ form {
 #countryName{
     align-items: center;
     grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    grid-row: 3 / 4;
 }
 
 #serviceName{
     align-items: right;
     grid-column: 2 / 3;
-    grid-row: 3 / 4;
+    grid-row: 5 / 6;
 
 }
 
 #search-button {
-    grid-row: 4/5;
+    grid-row: 7/8;
     grid-column: 2/3;
     /* width:5vw; 
     height: 3vw;  */
-    padding: 15px 32px;
+    padding: ;
     text-align: center;
+}
+
+.dropdown {
+    display:flex; 
+}
+
+.country-button {
+    background-color: white; 
+    padding: 2px; 
+    margin:10px; 
+    align-items: center; 
+
+}
+
+#popular-releases {
+    display:grid; 
+    grid-template-columns: repeat(3,33%);
+    grid-template-rows: repeat(3,33%);
+    height: 100vh;
+    margin-left:20px;
+    padding: 5px; 
+    text-align: center; 
+    margin-bottom: 10px; 
+
+}
+
+.poster {
+    width:30vw;
+    height: 40vw; 
+    align-items: center;
+    margin: 10px; 
+}
+
+#posterTitle {
+    text-align: center;
+    padding:15px; 
 }
 
 /*Desktop*/
 @media (min-width: 1025px){
-    header {
+    #popular-releases{
+        grid-template-columns: 1fr 1fr 1fr;
     }
-   
- 
 }
 
 /*Tablet*/
 @media (min-width: 481px) and (max-width:1024px){
-  
-    
+    #popular-releases{
+        grid-template-columns: 1fr 1fr;
+    }  
 }
 
 /*Mobile*/
 @media(max-width: 480px){
- 
-    
+    #popular-releases{
+        grid-template-columns: 1fr;
+    }  
 }

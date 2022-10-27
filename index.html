@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Boostrap CDN - CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js" defer></script>
     <title>Movie Finder App</title>
 </head>
@@ -16,7 +17,6 @@
         
     </header>
     <main>
-        <section id = "gridSection">
             <form action="" id="searchingForm">
 
                 <section id="movieSection">
@@ -37,12 +37,12 @@
                 <!-- To make a dropdown populated with values in an API -->
                 <!-- Need to getElementById -->
     
-                <!-- Dropdown for countries -->
-                <section id="countryName">
+                <!-- Old Dropdown for countries -->
+                <!-- <section id="countryName">
                     <label for="country">Choose a country</label>
                     <select id="country-dropdown" name="country">
                     </select>
-                </section>
+                </section> -->
                 
     
                 <!-- Dropdown for services -->
@@ -51,13 +51,65 @@
                     <select id="service-dropdown" name="service">
                     </select>
                 </section>
-                
-                
+
+                <div class="dropdown" id="countryName">
+                    <button id='dropdown-country-button' class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Choose a country 
+                    </button>
+                    <ul class="dropdown-menu" id="country-dropdown">
+
+                      <!-- <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+
+                     <!-- <li><button> </button></li> -->
+
+                    </ul>
+                  </div>
 
                 <input type="button" id="search-button" value="Submit"/>
-            </form>
+
+        </form>
+
+        <h2 id="posterTitle">Popular-releases</h2>
+
+   
+
+        <section id="popular-releases">
+            
+            <div id="poster-1">
+                <h3>Movie 1</h3>
+                <img class = "poster" src="https://image.tmdb.org/t/p/original/heAEH85fdxEgV98LizHbQCL95iZ.jpg" alt="">
+            </div>
+
+            <div id="poster-2">
+                <h3>Movie 2</h3>
+                <img class = "poster" src="https://image.tmdb.org/t/p/original/mMWLGu9pFymqipN8yvISHsAaj72.jpg" alt="">
+            </div>
+
+            <div id="poster-3">
+                <h3>Movie 3</h3>
+                <img class = "poster" src="https://image.tmdb.org/t/p/original/3UVe8NL1E2ZdUZ9EDlKGJY5UzE.jpg" alt="">
+            </div>
+
+            <div id="poster-4">
+                <h3>Movie 4</h3>
+                <img class = "poster" src="https://image.tmdb.org/t/p/original/iVcwSDfkxXbnBAixNcS4DgopU9x.jpg" alt="">
+            </div>
+
+            <div id="poster-5">
+                <h3>Movie 5</h3>
+                <img class = "poster" src="https://image.tmdb.org/t/p/original/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg" alt="">
+            </div>
+
+            <div id="poster-6">
+                <h3>Movie 6</h3>
+                <img class = "poster" src="https://image.tmdb.org/t/p/original/e5h1RlnQzjgEAh4s96k50S8XkKa.jpg" alt="">
+            </div>
 
         </section>
+    
+      
     </main>
 
     <footer>
@@ -66,3 +118,6 @@
 
 </body>
 </html>
+
+
+

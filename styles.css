@@ -1,1 +1,72 @@
 /* this is the styling page  */
+
+h1 {
+    font-size: 30px; 
+    font-family:'Courier New', Courier, monospace;
+    padding: 30px;
+    text-align: center;
+    background-color:cornflowerblue;
+    color: white;
+    border-radius:15px;
+}
+
+
+/* #gridSection{
+    display: grid;
+    grid-template-columns: repeat(3,33.3%);
+    height: 100vh;  
+    grid-template-rows: repeat(5,20%);
+
+} */
+
+form {
+    /* grid-column: 2 / 3;
+    grid-row: 1 / 2; */
+    display: grid;
+    grid-template-columns: repeat(3,33.3%);
+    height: 100vh;  
+    grid-template-rows: repeat(12,8.4%);
+}
+
+#movieSection{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2; 
+}
+
+#countryName{
+    align-items: center;
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+
+#serviceName{
+    align-items: right;
+    grid-column: 2 / 3;
+    grid-row: 6 / 7;
+
+}
+
+#search-button {
+    grid-row: 8/9;
+    grid-column: 2/3;
+    width:5vw; 
+    height: 3vw; 
+}
+
+/*Desktop*/
+@media (min-width: 1025px){
+   
+ 
+}
+
+/*Tablet*/
+@media (min-width: 481px) and (max-width:1024px){
+  
+    
+}
+
+/*Mobile*/
+@media(max-width: 480px){
+ 
+    
+}

@@ -8,6 +8,7 @@ const options = {
 
 function createPosters(title,description,service,posterURL){
     let poster = document.createElement('div')
+    poster.classList.add('newPoster')
 
     let titleTag = document.createElement('h2')
     titleTag.innerHTML = title
@@ -16,18 +17,22 @@ function createPosters(title,description,service,posterURL){
     imageTag.src = posterURL
 
     poster.append(titleTag,imageTag)
+    document.getElementById('poster-section').append(poster)
 }
 
 async function getMovie(movieName, country, service){
+    console.log(service)
     //const response = await fetch(`https://streaming-availability.p.rapidapi.com/search/basic?country=${countriesAbv[country]}&service=${service}&type=movie&keyword=${movieName}&page=1&output_language=en&language=en`, options)
-    const response = await fetch(`https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=${service}&type=movie&keyword=${movieName}&page=1&output_language=en&language=en`, options)
+    const response = await fetch(`https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=disney&type=movie&keyword=nemo&page=1&output_language=en&language=en`, options)
     const data = await response.json()
     let keys = Object.keys(data.results) //loop through the returned data.results object's keys, returned data is weirdly formatted
+    document.getElementById('popular-releases').style.display = 'none';
+    document.getElementById('posterTitle').style.display = 'none';
     for (let key of keys){
 		let title = data.results[key].title  //each movie is stored as on object with its key as an integer e.g data.results[0] = {title: 'finding nemo', country: [us,uk] ....}
 		let description = data.results[key].overview
         let posterURL = data.results[key].posterURLs['original']
-        createCards(title,description,service,posterURL)
+        createPosters(title,description,service,posterURL)
 
 	}
 }
@@ -53,6 +58,7 @@ function addCountries(countriesAbv){
         countryButton.type = 'button'
 
         countryButton.addEventListener('click', () => {
+            currentCountry = key
             document.getElementById('dropdown-country-button').innerHTML = `Country: ${key}`
         })
 
@@ -62,16 +68,24 @@ function addCountries(countriesAbv){
 
 }
 
+currentService = 'netflix'
 function addServices(services){
     const dropdown = document.getElementById('service-dropdown')
     for (let service of services){
-        let newService = document.createElement('option')
-        newService.value = service
-        newService.innerHTML = service.charAt(0).toUpperCase() + service.slice(1)
-        if (service === 'netflix'){
-            newService.selected = true
-        }
-        dropdown.append(newService)
+        let listItem = document.createElement('li')
+        let serviceButton = document.createElement('button')
+        serviceButton.innerHTML = service.charAt(0).toUpperCase() + service.slice(1)
+
+        serviceButton.classList.add('country-button')
+        serviceButton.type = 'button'
+
+        serviceButton.addEventListener('click', () => {
+            currentService = service
+            document.getElementById('dropdown-service-button').innerHTML = `Service: ${service}`
+        })
+
+        listItem.append(serviceButton)
+        dropdown.append(listItem)
     }
 }
 
@@ -107,5 +121,6 @@ countriesAbv = {
 addCountries(countriesAbv)
 addServices(services)
 
+getMovie('nemo','us','netflix')
 // Displaying movie info searching for user
 

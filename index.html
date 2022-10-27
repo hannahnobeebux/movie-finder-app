@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <!-- Boostrap CDN - CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
     <title>Movie Finder App</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
             <form action="" id="searchingForm">
 
                 <section id="movieSection">
-                    <label for="movie-name">Please enter a movie name: </label>
+                    <label id = "movie-name" for="movie-name">Please enter a movie name: </label>
                     <input type="text" id="movie-name" value="">
                 </section>
 
@@ -46,11 +46,28 @@
                 
     
                 <!-- Dropdown for services -->
-                <section id="serviceName">
+                <!-- <section id="serviceName">
                     <label for="service">Choose a service</label>
                     <select id="service-dropdown" name="service">
                     </select>
-                </section>
+                </section> -->
+
+                <div class="dropdown" id="serviceName">
+                    <button id='dropdown-service-button' class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Choose a service 
+                    </button>
+                    <ul class="dropdown-menu" id="service-dropdown">
+
+                      <!-- <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+
+                     <!-- <li><button> </button></li> -->
+
+                    </ul>
+                  </div>
+
+
 
                 <div class="dropdown" id="countryName">
                     <button id='dropdown-country-button' class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -77,37 +94,41 @@
 
         <section id="popular-releases">
             
-            <div id="poster-1">
+            <div class ="poster">
                 <h3>Movie 1</h3>
-                <img class = "poster" src="https://image.tmdb.org/t/p/original/heAEH85fdxEgV98LizHbQCL95iZ.jpg" alt="">
+                <img src="https://image.tmdb.org/t/p/original/heAEH85fdxEgV98LizHbQCL95iZ.jpg" alt="">
             </div>
 
-            <div id="poster-2">
+            <div class ="poster" >
                 <h3>Movie 2</h3>
-                <img class = "poster" src="https://image.tmdb.org/t/p/original/mMWLGu9pFymqipN8yvISHsAaj72.jpg" alt="">
+                <img src="https://image.tmdb.org/t/p/original/mMWLGu9pFymqipN8yvISHsAaj72.jpg" alt="">
             </div>
 
-            <div id="poster-3">
+            <div class ="poster">
                 <h3>Movie 3</h3>
                 <img class = "poster" src="https://image.tmdb.org/t/p/original/3UVe8NL1E2ZdUZ9EDlKGJY5UzE.jpg" alt="">
             </div>
 
-            <div id="poster-4">
+            <div class ="poster">
                 <h3>Movie 4</h3>
-                <img class = "poster" src="https://image.tmdb.org/t/p/original/iVcwSDfkxXbnBAixNcS4DgopU9x.jpg" alt="">
+                <img src="https://image.tmdb.org/t/p/original/iVcwSDfkxXbnBAixNcS4DgopU9x.jpg" alt="">
             </div>
 
-            <div id="poster-5">
+            <div class ="poster">
                 <h3>Movie 5</h3>
-                <img class = "poster" src="https://image.tmdb.org/t/p/original/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg" alt="">
+                <img src="https://image.tmdb.org/t/p/original/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg" alt="">
             </div>
 
-            <div id="poster-6">
+            <div class ="poster">
                 <h3>Movie 6</h3>
-                <img class = "poster" src="https://image.tmdb.org/t/p/original/e5h1RlnQzjgEAh4s96k50S8XkKa.jpg" alt="">
+                <img src="https://image.tmdb.org/t/p/original/e5h1RlnQzjgEAh4s96k50S8XkKa.jpg" alt="">
             </div>
 
         </section>
+
+        <div class = "cards" id="poster-section">
+
+        </div>
     
       
     </main>

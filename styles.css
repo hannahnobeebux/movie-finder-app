@@ -8,6 +8,8 @@ h1 {
     background-color:cornflowerblue;
     color: white;
     border-radius:15px;
+    margin: 15px;
+    margin-top: 10px;
 }
 
 
@@ -36,25 +38,29 @@ form {
 #countryName{
     align-items: center;
     grid-column: 2 / 3;
-    grid-row: 4 / 5;
+    grid-row: 2 / 3;
 }
 
 #serviceName{
     align-items: right;
     grid-column: 2 / 3;
-    grid-row: 6 / 7;
+    grid-row: 3 / 4;
 
 }
 
 #search-button {
-    grid-row: 8/9;
+    grid-row: 4/5;
     grid-column: 2/3;
-    width:5vw; 
-    height: 3vw; 
+    /* width:5vw; 
+    height: 3vw;  */
+    padding: 15px 32px;
+    text-align: center;
 }
 
 /*Desktop*/
 @media (min-width: 1025px){
+    header {
+    }
    
  
 }

@@ -6,8 +6,8 @@ const options = {
 	}
 };
 
-async function getMovie(movieName, country){
-    const response = await fetch(`https://streaming-availability.p.rapidapi.com/search/basic?country=${countriesAbv.country}}&service=netflix&type=movie&keyword=${movieName}&page=1&output_language=en&language=en`, options)
+async function getMovie(movieName, country, service){
+    const response = await fetch(`https://streaming-availability.p.rapidapi.com/search/basic?country=${countriesAbv[country]}&service=${service}&type=movie&keyword=${movieName}&page=1&output_language=en&language=en`, options)
     const data = await response.json()
     console.log(data)
     let keys = Object.keys(data.results)
@@ -20,8 +20,9 @@ async function getMovie(movieName, country){
 document.getElementById('search-button').addEventListener('click', () => {
     let movieName = document.getElementById('movie-name').value
     let country = document.getElementById("country-dropdown").value
+    let service = document.getElementById('service-dropdown').value
     console.log(country)
-    getMovie(movieName,country)
+    getMovie(movieName,country,service)
 })
 
 function addCountries(countriesAbv){
@@ -31,10 +32,33 @@ function addCountries(countriesAbv){
         let newCountry = document.createElement('option')
         newCountry.value = key
         newCountry.innerHTML = key
+        if (key === 'United Kingdom'){
+            newCountry.selected = true
+        }
         dropdown.append(newCountry)
         
     }
 }
+
+function addServices(services){
+    const dropdown = document.getElementById('service-dropdown')
+    for (let service of services){
+        let newService = document.createElement('option')
+        newService.value = service
+        newService.innerHTML = service.charAt(0).toUpperCase() + service.slice(1)
+        if (service === 'netflix'){
+            newService.selected = true
+        }
+        dropdown.append(newService)
+    }
+}
+
+services = ['netflix', 'prime', 
+    'disney', 'hbo', 
+    'hulu', 'peacock', 
+    'paramount', 'starz', 
+    'showtime', 'apple', 
+    'mubi']
 
 countriesAbv = {
     "Argentina":"ar", "Australia":"au", "Austria":"at",
@@ -59,3 +83,6 @@ countriesAbv = {
     'United States':'us', 'Vietnam':'vn',
     }
 addCountries(countriesAbv)
+addServices(services)
+
+// Displaying movie info searching for user

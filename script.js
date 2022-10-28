@@ -6,6 +6,18 @@ const options = {
 	}
 };
 
+function updateWatchList () {
+    const modelList = document.getElementById("modal-list")
+    modelList.innerHTML = ""
+    let listItem = document.createElement("li")
+    for (title of watchlist) {
+        listItem.innerHTML = title
+        modelList.appendChild(listItem)
+    }
+}
+
+watchlist = []
+
 function createPosters(title,description,service,posterURL){
     //console.log(title)
     let poster = document.createElement('div')
@@ -54,8 +66,26 @@ function createPosters(title,description,service,posterURL){
     serviceTag.innerHTML = currentService
     serviceTag.classList.add('poster-service')
 
+    let watchButton = document.createElement('button')
+    watchButton.innerHTML = 'Add to my watchlist'
+    watchButton.classList.add("watch-button")
+    watchButton.addEventListener('click', () => {
+        if (watchButton.innerHTML === 'Add to my watchlist'){
+            watchlist.push(title)
+            watchButton.innerHTML = 'Remove from my watchlist'
+            updateWatchList ()
+        }
+        else {
+            watchlist.splice(watchlist.indexOf(title),1)
+            watchButton.innerHTML = 'Add to my watchlist'
+            updateWatchList ()
+        }
+        console.log(watchlist)
 
-    poster.append(titleTag,imageTag,modalDiv,countryTag,serviceTag)
+    })
+
+
+    poster.append(titleTag,imageTag,modalDiv,countryTag,serviceTag,watchButton)
     document.getElementById('poster-section').append(poster)
 }
 
@@ -107,6 +137,7 @@ document.getElementById('search-button').addEventListener('click', () => {
 
 // funciton to add countries to dropdown menu
 currentCountry = 'United Kingdom' //set default as uk
+document.getElementById('dropdown-country-button').innerHTML = `Country: ${currentCountry}`
 function addCountries(countriesAbv){
     const dropdown = document.getElementById('country-dropdown')
     let keys = Object.keys(countriesAbv)
@@ -131,6 +162,7 @@ function addCountries(countriesAbv){
 
 
 currentService = 'disney' //sets the default service if none is selected with the button
+document.getElementById('dropdown-service-button').innerHTML = `Service: ${currentService}`
 function addServices(services){ //adds all the available services to the dropdown
     const dropdown = document.getElementById('service-dropdown')
     for (let service of services){

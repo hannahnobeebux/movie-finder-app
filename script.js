@@ -1,7 +1,7 @@
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': 'afdcdda00amsh2752c90f576065fp19e940jsn2cf71a54bb53',
+		'X-RapidAPI-Key': '3349e34336mshbb3e5a86990215fp1e2e62jsn598d9dbc447e',
 		'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
 	}
 };
@@ -111,7 +111,6 @@ async function getMovie(movieName){
     //console.log(movieName)
     const response = await fetch(`https://streaming-availability.p.rapidapi.com/search/basic?country=${countriesAbv[currentCountry]}&service=${currentService}&type=movie&keyword=${movieName}&page=1&output_language=en&language=en`, options)
     const data = await response.json()
-    console.log(data)
     
     let section = document.querySelector(".cards")
     section.innerHTML = "" // clearing card section for new search or error
@@ -231,7 +230,6 @@ countriesAbv = {
 addCountries(countriesAbv)
 addServices(services)
 
-getMovie('nemo')
 //getMovie('nemo')
 // Displaying movie info searching for user
 

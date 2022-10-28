@@ -19,7 +19,32 @@ function createPosters(title,description,service,posterURL){
     imageTag.src = posterURL
     imageTag.classList.add('poster-image') 
 
-    
+    // BUTTON CLASS = poster-description-button
+    modalString = `<button type="button" class="btn btn-primary poster-description-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Description
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Description: </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>${description}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>`
+
+    let modalDiv = document.createElement('div')
+    modalDiv.innerHTML = modalString
+    modalDiv.classList.add('poster-description')
 
     let countryTag = document.createElement('p')
     countryTag.innerHTML = currentCountry
@@ -30,7 +55,7 @@ function createPosters(title,description,service,posterURL){
     serviceTag.classList.add('poster-service')
 
 
-    poster.append(titleTag,imageTag,countryTag,serviceTag)
+    poster.append(titleTag,imageTag,modalDiv,countryTag,serviceTag)
     document.getElementById('poster-section').append(poster)
 }
 
@@ -65,7 +90,7 @@ async function getMovie(movieName){
     //console.log(data)
     let keys = Object.keys(data.results) //loop through the returned data.results object's keys, returned data is weirdly formatted
     document.getElementById('popular-releases').style.display = 'none';
-    document.getElementById('posterTitle').style.display = 'none';
+    document.getElementById('posterTitle').innerHTML = `Results For: ${movieName}`
     for (let key of keys){
 		let title = data.results[key].title  //each movie is stored as on object with its key as an integer e.g data.results[0] = {title: 'finding nemo', country: [us,uk] ....}
 		let description = data.results[key].overview
@@ -158,5 +183,6 @@ countriesAbv = {
 addCountries(countriesAbv)
 addServices(services)
 
+//getMovie('nemo')
 // Displaying movie info searching for user
 

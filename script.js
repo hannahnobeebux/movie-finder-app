@@ -21,7 +21,7 @@ function updateModal(description){
 }
 watchlist = []
 
-function createPosters(title,description,service,posterURL){
+function createPosters(title,description,service,posterURL,trailer){
     //console.log(title)
     let poster = document.createElement('div')
     poster.classList.add('newPoster')
@@ -32,10 +32,18 @@ function createPosters(title,description,service,posterURL){
 
     let imageTag = document.createElement('img') //creating an image element to add the poster image to
     imageTag.src = posterURL
-    imageTag.classList.add('poster-image') 
+    imageTag.classList.add('poster-image')
+
+
+    if (trailer){
+        imageTag.classList.add("trailer")
+        imageTag.addEventListener('click', () => {
+            window.open(`https://www.youtube.com/watch?v=${trailer}`)
+        })
+    }
 
     // BUTTON CLASS = poster-description-button
-    modalString = `<button type="button" class="btn btn-primary poster-description-button" data-bs-toggle="modal" data-bs-target="#exampleModal" id='${title}-description-button'">
+    modalString = `<button type="button" class="btn btn-primary poster-description-button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="${title}-description-button">
     Description
   </button>
   
@@ -73,7 +81,7 @@ function createPosters(title,description,service,posterURL){
     let watchButton = document.createElement('button')
     watchButton.innerHTML = 'Add to my watchlist'
     watchButton.classList.add("watch-button")
-    watchButton.addEventListener('click', () => {
+    watchButton.addEventListener('click', () => { 
         if (watchButton.innerHTML === 'Add to my watchlist'){
             watchlist.push(title)
             watchButton.innerHTML = 'Remove from my watchlist'
@@ -108,7 +116,7 @@ async function getMovie(movieName){
     let section = document.querySelector(".cards")
     section.innerHTML = "" // clearing card section for new search or error
 
-    if (data.results.length === 0) {
+    if (data.results.length === 0) { //if the 
         const errorMessage = document.createElement('h2')
         const sadImage = document.createElement("img")
         const sadImageCat = document.createElement("img")
@@ -133,7 +141,7 @@ async function getMovie(movieName){
 		let title = data.results[key].title  //each movie is stored as on object with its key as an integer e.g data.results[0] = {title: 'finding nemo', country: [us,uk] ....}
 		let description = data.results[key].overview
         let posterURL = data.results[key].posterURLs['original']
-        createPosters(title,description,currentService,posterURL)
+        createPosters(title,description,currentService,posterURL,data.results[key].video)
 	}
 }
 
@@ -223,6 +231,7 @@ countriesAbv = {
 addCountries(countriesAbv)
 addServices(services)
 
+getMovie('nemo')
 //getMovie('nemo')
 // Displaying movie info searching for user
 

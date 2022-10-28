@@ -35,7 +35,7 @@ function createPosters(title,description,service,posterURL){
     imageTag.classList.add('poster-image') 
 
     // BUTTON CLASS = poster-description-button
-    modalString = `<button type="button" class="btn btn-primary poster-description-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="updateModal('${description}')">
+    modalString = `<button type="button" class="btn btn-primary poster-description-button" data-bs-toggle="modal" data-bs-target="#exampleModal" id='${title}-description-button'">
     Description
   </button>
   
@@ -56,6 +56,7 @@ function createPosters(title,description,service,posterURL){
       </div>
     </div>
   </div>`
+
 
     let modalDiv = document.createElement('div')
     modalDiv.innerHTML = modalString
@@ -90,6 +91,10 @@ function createPosters(title,description,service,posterURL){
 
     poster.append(titleTag,imageTag,modalDiv,countryTag,serviceTag,watchButton)
     document.getElementById('poster-section').append(poster)
+
+    document.getElementById(`${title}-description-button`).addEventListener( "click", () => {
+        updateModal(description)
+    })
 }
 
 async function getMovie(movieName){
@@ -98,7 +103,7 @@ async function getMovie(movieName){
     //console.log(movieName)
     const response = await fetch(`https://streaming-availability.p.rapidapi.com/search/basic?country=${countriesAbv[currentCountry]}&service=${currentService}&type=movie&keyword=${movieName}&page=1&output_language=en&language=en`, options)
     const data = await response.json()
-
+    console.log(data)
     
     let section = document.querySelector(".cards")
     section.innerHTML = "" // clearing card section for new search or error

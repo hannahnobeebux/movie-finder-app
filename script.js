@@ -1,7 +1,7 @@
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '591950c54bmsh971da8756a9c91bp155940jsn7aa65193a364',
+		'X-RapidAPI-Key': 'afdcdda00amsh2752c90f576065fp19e940jsn2cf71a54bb53',
 		'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
 	}
 };
@@ -9,13 +9,16 @@ const options = {
 function updateWatchList () {
     const modelList = document.getElementById("modal-list")
     modelList.innerHTML = ""
-    let listItem = document.createElement("li")
     for (title of watchlist) {
+        let listItem = document.createElement("li")
         listItem.innerHTML = title
         modelList.appendChild(listItem)
     }
 }
 
+function updateModal(description){
+    document.getElementById('modal-description').innerHTML = description
+}
 watchlist = []
 
 function createPosters(title,description,service,posterURL){
@@ -32,7 +35,7 @@ function createPosters(title,description,service,posterURL){
     imageTag.classList.add('poster-image') 
 
     // BUTTON CLASS = poster-description-button
-    modalString = `<button type="button" class="btn btn-primary poster-description-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    modalString = `<button type="button" class="btn btn-primary poster-description-button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="updateModal('${description}')">
     Description
   </button>
   
@@ -45,7 +48,7 @@ function createPosters(title,description,service,posterURL){
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>${description}</p>
+          <p id='modal-description'>${description}</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

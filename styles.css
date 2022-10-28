@@ -261,6 +261,13 @@ form {
     border-radius: 10px;
 }
 
+#watch-list-btn {
+    grid-column: 1 / 2 ; 
+    grid-row: 1 / 3; 
+    border-color:  rgb(218, 0, 55);
+    
+}
+
 
 
 /*Desktop*/

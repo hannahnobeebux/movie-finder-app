@@ -1,2 +1,4 @@
-# movie-finder-app
-# this is our movie app
+# Welcome to the Movie Finder App! 🍿
+Multiverse Week 4 Group Project
+
+
